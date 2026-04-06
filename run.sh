@@ -1,5 +1,14 @@
 #!/bin/bash
 
+set -e
+
+mkdir -p output
+
+if [ "${KEEP_OUTPUT:-0}" != "1" ]; then
+  echo "Clearing output directory..."
+  rm -rf output/*
+fi
+
 echo "Building video converter Docker image..."
 docker build -t video-converter .
 
